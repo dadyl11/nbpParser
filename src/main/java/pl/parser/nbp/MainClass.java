@@ -19,13 +19,6 @@ public class MainClass {
 
   }
 
-  final String PATH = "http://www.nbp.pl/kursy/xml/dir";
-
-  public List<String> getXmlFilePathsFromDirTextFile(LocalDate startDate, LocalDate endDate, String currency) {
-    List<String> fileNames = new ArrayList<>();
-    String dir = PATH + startDate.getYear() + ".txt";
-    return fileNames;
-  }
 }
 
 
