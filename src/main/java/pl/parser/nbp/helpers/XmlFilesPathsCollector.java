@@ -35,7 +35,7 @@ public class XmlFilesPathsCollector {
     return fileNames;
   }
 
-  public boolean checkIfFileNameMatchCriteria(String fileName, LocalDate startDate, LocalDate endDate) {
+  private boolean checkIfFileNameMatchCriteria(String fileName, LocalDate startDate, LocalDate endDate) {
     if (!fileName.startsWith("c")) {
       return false;
     }

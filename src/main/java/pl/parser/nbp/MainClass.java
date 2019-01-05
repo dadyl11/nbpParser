@@ -3,20 +3,22 @@ package pl.parser.nbp;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import pl.parser.nbp.helpers.XmlFilesPathsCollector;
+import pl.parser.nbp.xmlParser.DOMParser;
 
 public class MainClass {
 
   public static void main(String[] args) {
 
     String currency = args[0];
-    String startDate = args[1];
-    String endDate = args[2];
+    LocalDate startDate = LocalDate.parse(args[1]);
+    LocalDate endDate = LocalDate.parse(args[2]);
 
-    System.out.println(currency + startDate + endDate);
-    LocalDate startDate2 = LocalDate.parse(startDate);
-    LocalDate endDate2 = LocalDate.parse(endDate);
+    DOMParser domParser = new DOMParser();
+    XmlFilesPathsCollector xmlFilesPathsCollector = new XmlFilesPathsCollector();
+    CalculateAllValues calculateAllValues = new CalculateAllValues(xmlFilesPathsCollector, domParser);
 
-
+    calculateAllValues.calculateMeanAndStandardDeviation(startDate, endDate, currency);
   }
 
 }

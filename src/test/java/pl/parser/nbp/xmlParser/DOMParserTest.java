@@ -13,6 +13,6 @@ class DOMParserTest {
     String currency = "EUR";
 
     //when
-    String test = new DOMParser().XMLParser(path, currency);
+    String[] test = new DOMParser().getBuyAndSellRatesFromXmlFile(path, currency);
   }
 }

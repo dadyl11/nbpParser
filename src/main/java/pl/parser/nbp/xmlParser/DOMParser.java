@@ -14,18 +14,15 @@ import org.xml.sax.SAXException;
 
 public class DOMParser {
 
-  public String XMLParser(String path, String currency) {
+  public String[] getBuyAndSellRatesFromXmlFile(String path, String currency) {
+    String[] buyAndSaleRate = new String[2];
     DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
     try (InputStream input = new URL(path).openStream()) {
       DocumentBuilder builder = factory.newDocumentBuilder();
       Document document = builder.parse(input);
       document.getDocumentElement().normalize();
 
-      System.out.println("root el: " + document.getDocumentElement().getNodeName());
-
       NodeList nodeList = document.getElementsByTagName("pozycja");
-
-      System.out.println("----------------------------");
 
       for (int i = 0; i < nodeList.getLength(); i++) {
         Node nNode = nodeList.item(i);
@@ -34,11 +31,9 @@ public class DOMParser {
           Element element = (Element) nNode;
 
           if (element.getElementsByTagName("kod_waluty").item(0).getTextContent().equals(currency)) {
-            System.out.println("current element: " + nNode.getNodeName());
 
-            System.out.println("currency: " + element.getElementsByTagName("kod_waluty").item(0).getTextContent());
-            System.out.println("byu: " + element.getElementsByTagName("kurs_kupna").item(0).getTextContent());
-            System.out.println("sell: " + element.getElementsByTagName("kurs_sprzedazy").item(0).getTextContent());
+            buyAndSaleRate[0] = element.getElementsByTagName("kurs_kupna").item(0).getTextContent();
+            buyAndSaleRate[1] = element.getElementsByTagName("kurs_sprzedazy").item(0).getTextContent();
           }
         }
       }
@@ -50,6 +45,6 @@ public class DOMParser {
     } catch (SAXException e) {
       e.printStackTrace();
     }
-    return "test";
+    return buyAndSaleRate;
   }
 }
