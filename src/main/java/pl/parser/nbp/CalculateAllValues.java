@@ -1,11 +1,10 @@
 package pl.parser.nbp;
 
-import java.sql.SQLOutput;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import org.apache.commons.math3.stat.descriptive.DescriptiveStatistics;
-import pl.parser.nbp.helpers.XmlFilesPathsCollector;
+import pl.parser.nbp.filesPathsCollectors.XmlFilesPathsCollector;
 import pl.parser.nbp.xmlParser.DOMParser;
 
 public class CalculateAllValues {

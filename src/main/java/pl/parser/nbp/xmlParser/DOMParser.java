@@ -27,11 +27,8 @@ public class DOMParser {
       for (int i = 0; i < nodeList.getLength(); i++) {
         Node nNode = nodeList.item(i);
         if (nNode.getNodeType() == Node.ELEMENT_NODE) {
-
           Element element = (Element) nNode;
-
           if (element.getElementsByTagName("kod_waluty").item(0).getTextContent().equals(currency)) {
-
             buyAndSaleRate[0] = element.getElementsByTagName("kurs_kupna").item(0).getTextContent();
             buyAndSaleRate[1] = element.getElementsByTagName("kurs_sprzedazy").item(0).getTextContent();
           }

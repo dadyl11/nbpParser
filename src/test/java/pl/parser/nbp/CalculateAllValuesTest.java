@@ -1,10 +1,8 @@
 package pl.parser.nbp;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import java.time.LocalDate;
 import org.junit.jupiter.api.Test;
-import pl.parser.nbp.helpers.XmlFilesPathsCollector;
+import pl.parser.nbp.filesPathsCollectors.XmlFilesPathsCollector;
 import pl.parser.nbp.xmlParser.DOMParser;
 
 class CalculateAllValuesTest {

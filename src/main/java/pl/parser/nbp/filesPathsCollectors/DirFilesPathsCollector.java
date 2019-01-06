@@ -1,15 +1,15 @@
-package pl.parser.nbp.helpers;
+package pl.parser.nbp.filesPathsCollectors;
 
 import java.time.LocalDate;
 import java.time.Year;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DirFilePathsCollector {
+public class DirFilesPathsCollector {
 
   private static final String DIR_PATH = "http://www.nbp.pl/kursy/xml/dir";
 
-  public List<String> getDirFilePaths(LocalDate startDate, LocalDate endDate) {
+  public List<String> getDirFilesPaths(LocalDate startDate, LocalDate endDate) {
     int startDateYear = startDate.getYear();
     int endDateYear = endDate.getYear();
     List<String> dirPaths = new ArrayList<>();

@@ -1,4 +1,4 @@
-package pl.parser.nbp.helpers;
+package pl.parser.nbp.filesPathsCollectors;
 
 import java.io.IOException;
 import java.net.URL;
@@ -12,16 +12,13 @@ public class XmlFilesPathsCollector {
 
   private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyMMdd");
   private static final String GENERAL_PATH = "http://www.nbp.pl/kursy/xml/";
-
-  private DirFilePathsCollector dirFilePathsCollector = new DirFilePathsCollector();
+  private DirFilesPathsCollector dirFilesPathsCollector = new DirFilesPathsCollector();
 
   public List<String> getXmlFilesPaths(LocalDate startDate, LocalDate endDate) {
     List<String> fileNames = new ArrayList<>();
-    List<String> dirFilesPaths = dirFilePathsCollector.getDirFilePaths(startDate, endDate);
+    List<String> dirFilesPaths = dirFilesPathsCollector.getDirFilesPaths(startDate, endDate);
     for (String path : dirFilesPaths) {
-      try {
-        URL url = new URL(path);
-        Scanner scanner = new Scanner(url.openStream());
+      try (Scanner scanner = new Scanner(new URL(path).openStream())) {
         while (scanner.hasNextLine()) {
           String nextLine = scanner.nextLine();
           if (checkIfFileNameMatchCriteria(nextLine, startDate, endDate)) {
@@ -35,7 +32,7 @@ public class XmlFilesPathsCollector {
     return fileNames;
   }
 
-  private boolean checkIfFileNameMatchCriteria(String fileName, LocalDate startDate, LocalDate endDate) {
+  public boolean checkIfFileNameMatchCriteria(String fileName, LocalDate startDate, LocalDate endDate) {
     if (!fileName.startsWith("c")) {
       return false;
     }
