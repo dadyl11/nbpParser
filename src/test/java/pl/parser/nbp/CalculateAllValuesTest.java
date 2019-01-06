@@ -17,6 +17,9 @@ class CalculateAllValuesTest {
     LocalDate endDate = LocalDate.parse("2013-01-31");
     String currency = "EUR";
     CalculateAllValues calculateAllValues = new CalculateAllValues(xmlFilesPathsCollector, domParser);
+
+    //when
     calculateAllValues.calculateMeanAndStandardDeviation(startDate, endDate, currency);
+
   }
 }
