@@ -2,6 +2,7 @@ package pl.parser.nbp;
 
 import java.time.LocalDate;
 import pl.parser.nbp.filesPathsCollectors.XmlFilesPathsCollector;
+import pl.parser.nbp.helpers.InputValidator;
 import pl.parser.nbp.xmlParser.DOMParser;
 
 public class MainClass {
@@ -15,7 +16,10 @@ public class MainClass {
     DOMParser domParser = new DOMParser();
     XmlFilesPathsCollector xmlFilesPathsCollector = new XmlFilesPathsCollector();
     CalculateAllValues calculateAllValues = new CalculateAllValues(xmlFilesPathsCollector, domParser);
+    InputValidator inputValidator = new InputValidator();
 
+    inputValidator.validateCurrency(currency);
+    inputValidator.validateDates(startDate, endDate);
     calculateAllValues.calculateMeanAndStandardDeviation(startDate, endDate, currency);
   }
 

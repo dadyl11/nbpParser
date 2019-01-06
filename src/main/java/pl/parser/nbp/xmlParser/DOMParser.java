@@ -31,6 +31,7 @@ public class DOMParser {
           if (element.getElementsByTagName("kod_waluty").item(0).getTextContent().equals(currency)) {
             buyAndSaleRate[0] = element.getElementsByTagName("kurs_kupna").item(0).getTextContent();
             buyAndSaleRate[1] = element.getElementsByTagName("kurs_sprzedazy").item(0).getTextContent();
+            break;
           }
         }
       }
@@ -39,8 +40,8 @@ public class DOMParser {
       ex.printStackTrace();
     } catch (ParserConfigurationException ex) {
       ex.printStackTrace();
-    } catch (SAXException e) {
-      e.printStackTrace();
+    } catch (SAXException ex) {
+      ex.printStackTrace();
     }
     return buyAndSaleRate;
   }
