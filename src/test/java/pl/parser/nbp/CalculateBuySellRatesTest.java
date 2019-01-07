@@ -22,7 +22,8 @@ class CalculateBuySellRatesTest {
     CalculateBuySellRates calculateBuySellRates = new CalculateBuySellRates(xmlFilesPathsCollector, domParser);
 
     //when
-    double[] actualMeanAndStandardDeviation = calculateBuySellRates.calculateMeanAndStandardDeviation(LocalDate.parse(startDate), LocalDate.parse(endDate), currency);
+    double[] actualMeanAndStandardDeviation = calculateBuySellRates
+        .calculateMeanAndStandardDeviation(LocalDate.parse(startDate), LocalDate.parse(endDate), currency);
 
     //then
     assertThat(actualMeanAndStandardDeviation, is(expectedResults));

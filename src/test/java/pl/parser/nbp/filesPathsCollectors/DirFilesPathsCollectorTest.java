@@ -1,9 +1,9 @@
 package pl.parser.nbp.filesPathsCollectors;
 
-import static org.hamcrest.Matchers.hasItem;
-import static org.hamcrest.Matchers.hasProperty;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.hasItem;
 import static org.hamcrest.Matchers.hasSize;
+
 import java.time.LocalDate;
 import java.util.List;
 import org.junit.jupiter.api.Test;
@@ -22,6 +22,7 @@ class DirFilesPathsCollectorTest {
     //then
     assertThat(dirPaths, hasSize(1));
   }
+
   @Test
   void shouldCheckIfDirFilePathIsCorrect() {
     //given
