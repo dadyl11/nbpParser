@@ -4,29 +4,27 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
 import java.time.LocalDate;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ArgumentsSource;
 import pl.parser.nbp.filesPathsCollectors.XmlFilesPathsCollector;
+import pl.parser.nbp.testParameters.InputsForCalculateBuySell;
 import pl.parser.nbp.xmlParser.DOMParser;
 
 class CalculateBuySellRatesTest {
 
-  XmlFilesPathsCollector xmlFilesPathsCollector = new XmlFilesPathsCollector();
-  DOMParser domParser = new DOMParser();
+  private XmlFilesPathsCollector xmlFilesPathsCollector = new XmlFilesPathsCollector();
+  private DOMParser domParser = new DOMParser();
 
-  @Test
-  void shouldCalculateMeanAndStandardDeviation() {
+  @ParameterizedTest
+  @ArgumentsSource(InputsForCalculateBuySell.class)
+  void shouldCalculateMeanAndStandardDeviation(String currency, String startDate, String endDate, double[] expectedResults) {
     //given
-    LocalDate startDate = LocalDate.parse("2013-01-28");
-    LocalDate endDate = LocalDate.parse("2013-01-31");
-    String currency = "EUR";
-    double[] expectedResults = {4.150525, 0.012477053939131788};
     CalculateBuySellRates calculateBuySellRates = new CalculateBuySellRates(xmlFilesPathsCollector, domParser);
 
     //when
-    double[] actualMeanAndStandardDeviation = calculateBuySellRates.calculateMeanAndStandardDeviation(startDate, endDate, currency);
+    double[] actualMeanAndStandardDeviation = calculateBuySellRates.calculateMeanAndStandardDeviation(LocalDate.parse(startDate), LocalDate.parse(endDate), currency);
 
     //then
-    System.out.println(actualMeanAndStandardDeviation[1]);
     assertThat(actualMeanAndStandardDeviation, is(expectedResults));
   }
 }
