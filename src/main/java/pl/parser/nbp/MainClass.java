@@ -9,7 +9,11 @@ public class MainClass {
 
   public static void main(String[] args) {
 
-    String currency = args[0];
+//    String currency = args[0];
+//    LocalDate startDate = LocalDate.parse(args[1]);
+//    LocalDate endDate = LocalDate.parse(args[2]);
+
+    String currency = "EUR";
     LocalDate startDate = LocalDate.parse(args[1]);
     LocalDate endDate = LocalDate.parse(args[2]);
 

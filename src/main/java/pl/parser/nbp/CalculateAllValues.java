@@ -1,9 +1,9 @@
 package pl.parser.nbp;
 
+import com.google.common.math.StatsAccumulator;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import org.apache.commons.math3.stat.descriptive.DescriptiveStatistics;
 import pl.parser.nbp.filesPathsCollectors.XmlFilesPathsCollector;
 import pl.parser.nbp.xmlParser.DOMParser;
 
@@ -27,17 +27,17 @@ public class CalculateAllValues {
       sellRates.add(Double.parseDouble(domParser.getBuyAndSellRatesFromXmlFile(xmlPath, currency)[1].replace(",", ".")));
     }
 
-    DescriptiveStatistics descriptiveStatisticsByeRate = new DescriptiveStatistics();
-    DescriptiveStatistics descriptiveStatisticsSellRate = new DescriptiveStatistics();
+    StatsAccumulator statsAccumulatorBuyRate = new StatsAccumulator();
+    StatsAccumulator statsAccumulatorSellRate = new StatsAccumulator();
 
-    for (double buyRate : buyRates){
-      descriptiveStatisticsByeRate.addValue(buyRate);
+    for (double buyRate : buyRates) {
+      statsAccumulatorBuyRate.add(buyRate);
     }
-    for (double sellRate : sellRates){
-      descriptiveStatisticsSellRate.addValue(sellRate);
+    for (double sellRate : sellRates) {
+      statsAccumulatorSellRate.add(sellRate);
     }
-    double mean = descriptiveStatisticsByeRate.getMean();
-    double standardDeviation = descriptiveStatisticsSellRate.getStandardDeviation();
+    double mean = statsAccumulatorBuyRate.mean();
+    double standardDeviation = statsAccumulatorSellRate.populationStandardDeviation();
     System.out.printf("%.4f %n", mean);
     System.out.printf("%.4f %n", standardDeviation);
   }

@@ -20,6 +20,5 @@ class CalculateAllValuesTest {
 
     //when
     calculateAllValues.calculateMeanAndStandardDeviation(startDate, endDate, currency);
-
   }
 }
