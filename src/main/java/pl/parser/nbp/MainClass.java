@@ -16,13 +16,13 @@ public class MainClass {
 
     DOMParser domParser = new DOMParser();
     XmlFilesPathsCollector xmlFilesPathsCollector = new XmlFilesPathsCollector();
-    CalculateBuySellRates calculateBuySellRates = new CalculateBuySellRates(xmlFilesPathsCollector, domParser);
+    BuySellRatesCalculator buySellRatesCalculator = new BuySellRatesCalculator(xmlFilesPathsCollector, domParser);
     InputValidator inputValidator = new InputValidator();
     PrintValues printValues = new PrintValues();
 
     inputValidator.validateCurrency(currency);
     inputValidator.validateDates(startDate, endDate);
-    printValues.printFormatedInputs(calculateBuySellRates.calculateMeanAndStandardDeviation(startDate, endDate, currency));
+    printValues.printFormatedInputs(buySellRatesCalculator.calculateMeanAndStandardDeviation(startDate, endDate, currency));
   }
 
 }

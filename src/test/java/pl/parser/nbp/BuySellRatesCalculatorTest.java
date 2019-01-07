@@ -10,7 +10,7 @@ import pl.parser.nbp.filesPathsCollectors.XmlFilesPathsCollector;
 import pl.parser.nbp.testParameters.InputsForCalculateBuySell;
 import pl.parser.nbp.xmlParser.DOMParser;
 
-class CalculateBuySellRatesTest {
+class BuySellRatesCalculatorTest {
 
   private XmlFilesPathsCollector xmlFilesPathsCollector = new XmlFilesPathsCollector();
   private DOMParser domParser = new DOMParser();
@@ -19,10 +19,10 @@ class CalculateBuySellRatesTest {
   @ArgumentsSource(InputsForCalculateBuySell.class)
   void shouldCalculateMeanAndStandardDeviation(String currency, String startDate, String endDate, double[] expectedResults) {
     //given
-    CalculateBuySellRates calculateBuySellRates = new CalculateBuySellRates(xmlFilesPathsCollector, domParser);
+    BuySellRatesCalculator buySellRatesCalculator = new BuySellRatesCalculator(xmlFilesPathsCollector, domParser);
 
     //when
-    double[] actualMeanAndStandardDeviation = calculateBuySellRates
+    double[] actualMeanAndStandardDeviation = buySellRatesCalculator
         .calculateMeanAndStandardDeviation(LocalDate.parse(startDate), LocalDate.parse(endDate), currency);
 
     //then
