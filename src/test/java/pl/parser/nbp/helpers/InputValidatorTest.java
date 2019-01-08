@@ -30,7 +30,7 @@ class InputValidatorTest {
     });
 
     //then
-    assertEquals("Wrong currency code.", exception.getMessage());
+    assertEquals("Currency code out of the scope. Choose one of the fallowing codes: EUR, USD, CHF, GBP.", exception.getMessage());
   }
 
   @Test

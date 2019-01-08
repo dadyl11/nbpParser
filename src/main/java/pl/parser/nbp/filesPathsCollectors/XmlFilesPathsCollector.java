@@ -7,16 +7,20 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class XmlFilesPathsCollector {
 
   private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyMMdd");
   private static final String GENERAL_PATH = "http://www.nbp.pl/kursy/xml/";
-  private DirFilesPathsCollector dirFilesPathsCollector = new DirFilesPathsCollector();
+  private TextFilesPathsCollector textFilesPathsCollector = new TextFilesPathsCollector();
+
+  Logger logger = LoggerFactory.getLogger(XmlFilesPathsCollector.class);
 
   public List<String> getXmlFilesPaths(LocalDate startDate, LocalDate endDate) {
     List<String> fileNames = new ArrayList<>();
-    List<String> dirFilesPaths = dirFilesPathsCollector.getDirFilesPaths(startDate, endDate);
+    List<String> dirFilesPaths = textFilesPathsCollector.getDirFilesPaths(startDate, endDate);
     for (String path : dirFilesPaths) {
       try (Scanner scanner = new Scanner(new URL(path).openStream())) {
         while (scanner.hasNextLine()) {
@@ -26,6 +30,7 @@ public class XmlFilesPathsCollector {
           }
         }
       } catch (IOException ex) {
+        logger.error("Input/Output Exception was thrown.", ex);
         ex.printStackTrace();
       }
     }

@@ -6,6 +6,8 @@ import java.net.URL;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -13,6 +15,8 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 public class DOMParser {
+
+  Logger logger = LoggerFactory.getLogger(DOMParser.class);
 
   public String[] getBuyAndSellRatesFromXmlFile(String path, String currency) {
 
@@ -45,12 +49,12 @@ public class DOMParser {
 
       nodeList = document.getElementsByTagName("pozycja");
 
-    } catch (ParserConfigurationException e) {
-      e.printStackTrace();
-    } catch (IOException e) {
-      e.printStackTrace();
-    } catch (SAXException e) {
-      e.printStackTrace();
+    } catch (ParserConfigurationException ex) {
+      logger.error("Parse configuration exception was throw.", ex);
+    } catch (IOException ex) {
+      logger.error("Input/Output exception was throw.", ex);
+    } catch (SAXException ex) {
+      logger.error("SAX exception was throw.", ex);
     }
     return nodeList;
   }

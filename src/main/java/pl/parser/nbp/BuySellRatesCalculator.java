@@ -6,12 +6,12 @@ import java.util.List;
 import pl.parser.nbp.filesPathsCollectors.XmlFilesPathsCollector;
 import pl.parser.nbp.xmlParser.DOMParser;
 
-public class CalculateBuySellRates {
+public class BuySellRatesCalculator {
 
   private XmlFilesPathsCollector xmlFilesPathsCollector;
   private DOMParser domParser;
 
-  public CalculateBuySellRates(XmlFilesPathsCollector xmlFilesPathsCollector, DOMParser domParser) {
+  public BuySellRatesCalculator(XmlFilesPathsCollector xmlFilesPathsCollector, DOMParser domParser) {
     this.xmlFilesPathsCollector = xmlFilesPathsCollector;
     this.domParser = domParser;
   }

@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 class DOMParserTest {
 
   @Test
-  void shouldCheckBuyRate() {
+  void shouldReturnCorrectBuyRate() {
     //given
     String path = "http://www.nbp.pl/kursy/xml/c025z100205.xml";
     String currency = "EUR";
@@ -22,7 +22,7 @@ class DOMParserTest {
   }
 
   @Test
-  void shouldCheckSellRate() {
+  void shouldReturnCorrectSellRate() {
     //given
     String path = "http://www.nbp.pl/kursy/xml/c025z100205.xml";
     String currency = "EUR";
