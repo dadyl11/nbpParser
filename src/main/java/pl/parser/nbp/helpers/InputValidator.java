@@ -9,7 +9,7 @@ public class InputValidator {
   public void validateCurrency(String currency) {
     List<String> currencies = Arrays.asList("USD", "EUR", "CHF", "GBP");
     if (!currencies.contains(currency)) {
-      throw new IllegalArgumentException("Wrong currency code.");
+      throw new IllegalArgumentException("Currency code out of the scope. Choose one of the fallowing codes: EUR, USD, CHF, GBP.");
     }
   }
 

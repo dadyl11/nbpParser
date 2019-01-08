@@ -5,7 +5,7 @@ import java.time.Year;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DirFilesPathsCollector {
+public class TextFilesPathsCollector {
 
   private static final String DIR_PATH = "http://www.nbp.pl/kursy/xml/dir";
 
