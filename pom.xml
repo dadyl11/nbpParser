@@ -10,7 +10,7 @@
 
   <properties>
     <maven-compiler-plugin>3.7.0</maven-compiler-plugin>
-    <guava>25.1-jre</guava>
+    <guava>29.0-jre</guava>
     <junit-jupiter-api>5.2.0</junit-jupiter-api>
     <hamcrest-all>1.3</hamcrest-all>
     <junit-jupiter-params>5.2.0</junit-jupiter-params>
